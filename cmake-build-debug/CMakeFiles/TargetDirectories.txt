@@ -1,3 +1,0 @@
-/Users/swagner/Private/clarch/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/swagner/Private/clarch/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/swagner/Private/clarch/cmake-build-debug/CMakeFiles/clarch.dir
