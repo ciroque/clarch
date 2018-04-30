@@ -3,4 +3,4 @@ project(clarch)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(clarch main.cpp)
+add_executable(clarch main.cpp src/Args.cpp src/Args.h)

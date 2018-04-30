@@ -1,6 +1,11 @@
 #include <iostream>
+#include "./src/Args.h"
 
-int main() {
-    std::cout << "Hello, World!" << std::endl;
+int main(int argc, char **argv) {
+    ArgsMap map;
+
+    auto *args = new Args(argc, argv);
+
+    delete args;
     return 0;
 }
