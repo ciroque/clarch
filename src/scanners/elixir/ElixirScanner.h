@@ -24,6 +24,9 @@ private:
             {"use", FileStatsKeys::Reference}
     };
 
+    std::string cleanValue(std::string);
+
+    std::vector<std::string> disentangleMultiAliases(std::string);
 };
 
 #endif //CLARCH_ELIXIRSCANNER_H
