@@ -1,0 +1,24 @@
+//
+// Created by Steve Wagner on 5/1/18.
+//
+// Lifted from: https://stackoverflow.com/questions/479080/trim-is-not-part-of-the-standard-c-c-library
+//
+
+#include "StringUtils.h"
+
+const std::string StringUtils::whiteSpaces = " \f\n\r\t\v";
+
+void StringUtils::trimRight(std::string& str, const std::string& trimChars) {
+    std::string::size_type pos = str.find_last_not_of(trimChars);
+    str.erase(pos + 1);
+}
+
+void StringUtils::trimLeft( std::string& str, const std::string& trimChars) {
+    std::string::size_type pos = str.find_first_not_of(trimChars);
+    str.erase(0, pos);
+}
+
+void StringUtils::trim(std::string& str, const std::string& trimChars) {
+    trimRight(str, trimChars);
+    trimLeft(str, trimChars);
+}
