@@ -2,6 +2,7 @@
 // Created by Steve Wagner on 5/1/18.
 //
 
+#include <sstream>
 #include "ElixirScanner.h"
 #include "../../StringUtils.h"
 
@@ -40,27 +41,21 @@ std::string ElixirScanner::cleanValue(std::string value) {
 }
 
 std::vector<std::string> ElixirScanner::disentangleMultiAliases(std::string value) {
-    // TODO: Handle nefarious constructs such as "alias Scooter.Sov.{FinalSpendDetail, FinalSpendsPeriod, Spend}"
-
-    std::vector<std::string> aliases;
+    std::vector<std::string> references;
 
     unsigned long index = value.find('{');
     if(index != std::string::npos) {
         std::string prefix = value.substr(0, index);
-
-        std::cout << "\r\n!! value >> " << value << "\r\n";
-
-        std::string multis = value.substr(index + 1, (value.length() - (index + 2)));
-
-        std::cout << "\r\n!! prefix >> " << prefix << "\r\n";
-        std::cout << "\r\n!! multis >> " << multis << "\r\n";
-
-        aliases.push_back(prefix);
-        aliases.push_back(multis);
+        std::istringstream multis(value.substr(index + 1, (value.length() - (index + 2))));
+        std::string referenced;
+        while(getline(multis, referenced, ',')) {
+            StringUtils::trim(referenced);
+            references.push_back(prefix + referenced);
+        }
 
     } else {
-        aliases.push_back(value);
+        references.push_back(value);
     }
 
-    return aliases;
+    return references;
 }
