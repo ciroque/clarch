@@ -44,3 +44,19 @@ void FileStats::setValue(FileStatsKeys key, const std::string &value) {
         }
     }
 }
+
+std::string FileStats::getFilename() {
+    return m_filename;
+}
+
+std::string FileStats::getModule() {
+    return m_module;
+}
+
+std::string FileStats::getNamespace() {
+    return m_namespace;
+}
+
+std::vector<std::string> FileStats::getReferences() {
+    return m_references;
+}

@@ -16,7 +16,6 @@ FileStats *FileReader::processFile(std::string path, Scanner *scanner) {
 
     while(input >> token) {
         if(scanner->tokenOfInterest(token)) {
-//            input >> value;
             std::getline(input, value);
             scanner->handleToken(token, value, stats);
         }

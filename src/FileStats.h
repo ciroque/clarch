@@ -20,9 +20,15 @@ public:
 
     void setValue(FileStatsKeys key, const std::string &value);
 
-    void setNamespace(std::string);
-    void setModule(std::string);
     void addReference(std::string);
+
+    std::string getFilename();
+    std::string getModule();
+    std::string getNamespace();
+    std::vector<std::string> getReferences();
+
+    void setModule(std::string);
+    void setNamespace(std::string);
 
 private:
     std::string m_namespace;

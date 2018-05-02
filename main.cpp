@@ -11,6 +11,13 @@ int main(int argc, char **argv) {
     auto elixirScanner = new ElixirScanner();
 
     auto fileStats = FileReader::processFile(args->getArg("path"), elixirScanner);
+    std::cout << fileStats->getFilename() << "\r\n" << fileStats->getModule() << "\r\n" << fileStats->getNamespace();
+
+    std::vector<std::string> references = fileStats->getReferences();
+    std::vector<std::string>::iterator it;
+    for(it = references.begin(); it != references.end(); it++) {
+        std::cout << "> " << *it << "\r\n";
+    }
 
     delete args;
     delete fileStats;
