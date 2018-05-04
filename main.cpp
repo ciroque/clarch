@@ -1,7 +1,12 @@
 #include <iostream>
+#include <filesystem>
+
 #include "./src/Args.h"
 #include "src/FileReader.h"
 #include "src/scanners/elixir/ElixirScanner.h"
+#include "src/DirectoryReader.h"
+
+using namespace std::experimental::filesystem::v1;
 
 int main(int argc, char **argv) {
     ArgsMap map;
@@ -18,6 +23,9 @@ int main(int argc, char **argv) {
     for(it = references.begin(); it != references.end(); it++) {
         std::cout << "> " << *it << "\r\n";
     }
+
+    std::vector<FileStats*> allStats;
+    DirectoryReader::processDirectory(args, elixirScanner, &allStats);
 
     delete args;
     delete fileStats;

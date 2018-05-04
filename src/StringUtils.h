@@ -18,6 +18,8 @@ public:
     static void trimRight( std::string&, const std::string& trimChars = whiteSpaces);
     static void trimLeft(std::string& str, const std::string& trimChars = whiteSpaces );
     static void trim(std::string& str, const std::string& trimChars = whiteSpaces);
+
+    static std::string substrBefore(std::string, std::string);
 };
 
 

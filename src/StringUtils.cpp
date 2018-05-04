@@ -4,6 +4,7 @@
 // Lifted from: https://stackoverflow.com/questions/479080/trim-is-not-part-of-the-standard-c-c-library
 //
 
+#include <iostream>
 #include "StringUtils.h"
 
 const std::string StringUtils::whiteSpaces = " \f\n\r\t\v";
@@ -21,4 +22,17 @@ void StringUtils::trimLeft( std::string& str, const std::string& trimChars) {
 void StringUtils::trim(std::string& str, const std::string& trimChars) {
     trimRight(str, trimChars);
     trimLeft(str, trimChars);
+}
+
+std::string StringUtils::substrBefore(std::string str, std::string find) {
+    std::string output;
+    unsigned long index = str.find(find);
+    if(index != std::string::npos) {
+        output = str.substr(0, index);
+    } else {
+        output = str;
+    }
+//    std::cout << "substrBefore(" << str << ", " << find << ") --> " << output << "\n";
+
+    return output;
 }
