@@ -2,22 +2,36 @@
 // Created by Steve on 5/4/2018.
 //
 
-#include <filesystem>
+#include <experimental/filesystem>
 #include "DirectoryReader.h"
+#include "FileReader.h"
 
 namespace fs = std::experimental::filesystem;
 
 void DirectoryReader::processDirectory(Args *args, Scanner *scanner, std::vector<FileStats*> *fileStats) {
-    for(auto& p: fs::recursive_directory_iterator(args->getArg("path"))) {
-        if(p.is_directory() && p.path().filename() == "deps") {
-            continue;
-        }
+    std::map<std::string, bool > excludeList = { {"_build", true}, {"deps", true}, {".git", true}};
 
-        if(p.path().has_extension()) {
-            if(p.path().extension() == ".ex") {
-//                std::cout << p.path().filename() << "\r\n";
-                fileStats->push_back(new FileStats(p.path().string()));
+    fs::path rootPath = args->getArg("path");
+
+    fs::recursive_directory_iterator iterator(rootPath);
+
+    for(decltype(iterator) end; iterator != end; iterator++) {
+
+        fs::directory_entry p = *iterator;
+
+
+        if(fs::is_directory(p.path())) {
+            std::string filename = p.path().filename();
+            bool excluded = excludeList.count(filename) > 0;
+            if(excluded) {
+                iterator.disable_recursion_pending();
             }
-        }
+
+        } else {
+            if(p.path().extension() == ".ex") {
+                FileStats *fs = FileReader::processFile(p.path(), scanner);
+                fileStats->push_back(fs);
+            }
+      }
     }
 }
