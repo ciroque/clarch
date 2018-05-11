@@ -16,5 +16,9 @@ int main(int argc, char **argv) {
     ReferenceResolver::ResolveReferenced(stats);
     JsonRenderer::Render("output.json", stats);
 
+    for(auto &stat : stats) {
+        std::cout << stat.ToString() << "\n\n";
+    }
+
     return 0;
 }

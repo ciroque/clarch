@@ -17,6 +17,7 @@ public:
 
 private:
     static ModuleMap &PopulateModuleMap(ModuleStatsList&, ModuleMap&);
+    static ModuleStatsList &Resolve(ModuleStatsList&, ModuleMap);
 };
 
 

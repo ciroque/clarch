@@ -11,7 +11,19 @@ ModuleStats::ModuleStats(std::string filename) {
 }
 
 void ModuleStats::AddReference(std::string reference) {
-    m_references.push_back(reference);
+    try {
+        m_references.push_back(reference);
+    } catch(std::exception &ex) {
+        std::cerr << ex.what() << "\n";
+    }
+}
+
+void ModuleStats::AddReferencedBy(std::string referencedBy) {
+    try {
+        m_referencedBy.push_back(referencedBy);
+    } catch(std::exception &ex) {
+        std::cerr << ex.what() << "\n";
+    }
 }
 
 void ModuleStats::SetValue(ModuleStatsKeys key, const std::string &value) {
@@ -27,7 +39,8 @@ void ModuleStats::SetValue(ModuleStatsKeys key, const std::string &value) {
         }
 
         case ModuleStatsKeys ::Reference: {
-            m_references.push_back(value);
+//            m_references.push_back(value);
+            AddReference(value);
             break;
         }
 
@@ -59,8 +72,14 @@ std::string ModuleStats::ToString() {
     moduleStats += "Filename: " + m_filename;
     moduleStats += "\nModule: " + m_module;
     moduleStats += "\nNamespace: " + m_namespace;
+
     moduleStats += "\nReferences: ";
     for(const auto &ref : m_references) {
+        moduleStats += "\n\t-- " + ref;
+    }
+
+    moduleStats += "\nReferenced By: ";
+    for(const auto &ref : m_referencedBy) {
         moduleStats += "\n\t-- " + ref;
     }
 

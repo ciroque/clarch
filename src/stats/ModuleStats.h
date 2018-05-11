@@ -11,6 +11,7 @@
 class ModuleStats;
 
 typedef std::vector<ModuleStats> ModuleStatsList;
+typedef std::vector<std::string> StringList;
 
 enum ModuleStatsKeys : int {
     Namespace = 1,
@@ -25,6 +26,7 @@ public:
     void SetValue(ModuleStatsKeys key, const std::string &value);
 
     void AddReference(std::string);
+    void AddReferencedBy(std::string);
 
     std::string GetFilename();
     std::string GetModule();
@@ -37,7 +39,8 @@ private:
     std::string m_namespace;
     std::string m_module;
     std::string m_filename;
-    std::vector<std::string> m_references;
+    StringList m_references;
+    std::vector<std::string> m_referencedBy;
 };
 
 
