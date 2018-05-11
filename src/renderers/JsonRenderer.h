@@ -8,8 +8,9 @@
 
 #include <string>
 #include "../FileStats.h"
+#include "Renderer.h"
 
-class JsonRenderer {
+class JsonRenderer : public Renderer {
 public:
     static void render(std::string filename, std::vector<FileStats>);
 };
