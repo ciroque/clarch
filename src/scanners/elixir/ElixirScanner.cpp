@@ -10,7 +10,7 @@ bool ElixirScanner::tokenOfInterest(std::string token) {
     return m_mappings.count(token) > 0;
 }
 
-FileStats *ElixirScanner::handleToken(std::string token, std::string value, FileStats *stats) {
+FileStats ElixirScanner::handleToken(std::string token, std::string value, FileStats stats) {
     value = StringUtils::substrBefore(value, " do");
 
     auto values = disentangleMultiAliases(value);
@@ -20,7 +20,7 @@ FileStats *ElixirScanner::handleToken(std::string token, std::string value, File
     std::vector<std::string>::iterator it;
     for( it = values.begin(); it != values.end(); it++) {
         cleaned = StringUtils::substrBefore(*it, ",");
-        stats->setValue(m_mappings.at(token), cleaned);
+        stats.setValue(m_mappings.at(token), cleaned);
     }
 
     return stats;

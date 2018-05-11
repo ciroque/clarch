@@ -11,7 +11,7 @@
 
 class DirectoryReader {
 public:
-    static void processDirectory(Args*, Scanner*, std::vector<FileStats*>*);
+    static void processDirectory(Args&, Scanner*, std::vector<FileStats>&);
 };
 
 

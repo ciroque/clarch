@@ -14,7 +14,7 @@ public:
     Scanner() = default;
 
     virtual bool tokenOfInterest(std::string) = 0;
-    virtual FileStats *handleToken(std::string token, std::string value, FileStats *stats) = 0;
+    virtual FileStats handleToken(std::string token, std::string value, FileStats stats) = 0;
 
     std::string trim(std::string input) {
         return input;

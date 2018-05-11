@@ -12,7 +12,7 @@ class ElixirScanner : public Scanner {
 public:
     ElixirScanner() = default;
     bool tokenOfInterest(std::string) override;
-    FileStats *handleToken(std::string token, std::string value, FileStats *stats) override;
+    FileStats handleToken(std::string token, std::string value, FileStats stats) override;
 
 private:
     std::map<std::string, FileStatsKeys> m_mappings = {
