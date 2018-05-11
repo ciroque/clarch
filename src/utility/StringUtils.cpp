@@ -9,22 +9,22 @@
 
 const std::string StringUtils::whiteSpaces = " \f\n\r\t\v";
 
-void StringUtils::trimRight(std::string& str, const std::string& trimChars) {
+void StringUtils::TrimRight(std::string &str, const std::string &trimChars) {
     std::string::size_type pos = str.find_last_not_of(trimChars);
     str.erase(pos + 1);
 }
 
-void StringUtils::trimLeft( std::string& str, const std::string& trimChars) {
+void StringUtils::TrimLeft(std::string &str, const std::string &trimChars) {
     std::string::size_type pos = str.find_first_not_of(trimChars);
     str.erase(0, pos);
 }
 
 void StringUtils::trim(std::string& str, const std::string& trimChars) {
-    trimRight(str, trimChars);
-    trimLeft(str, trimChars);
+    TrimRight(str, trimChars);
+    TrimLeft(str, trimChars);
 }
 
-std::string StringUtils::substrBefore(std::string str, std::string find) {
+std::string StringUtils::SubstringBefore(std::string str, std::string find) {
     std::string output;
     unsigned long index = str.find(find);
     if(index != std::string::npos) {
@@ -32,7 +32,5 @@ std::string StringUtils::substrBefore(std::string str, std::string find) {
     } else {
         output = str;
     }
-//    std::cout << "substrBefore(" << str << ", " << find << ") --> " << output << "\n";
-
     return output;
 }

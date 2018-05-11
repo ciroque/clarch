@@ -12,9 +12,9 @@ int main(int argc, char **argv) {
     auto elixirScanner = new ElixirScanner();
 
     ModuleStatsList stats;
-    DirectoryReader::processDirectory(args, elixirScanner, stats);
+    DirectoryReader::ProcessDirectory(args, elixirScanner, stats);
     ReferenceResolver::ResolveReferenced(stats);
-    JsonRenderer::render("output.json", stats);
+    JsonRenderer::Render("output.json", stats);
 
     return 0;
 }

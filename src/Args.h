@@ -14,12 +14,12 @@ class Args {
 public:
     Args(int argc, char **argv);
 
-    std::string getArg(std::string);
-    void printAll();
+    std::string GetArg(std::string);
+    void PrintAll();
 
 private:
     ArgsMap m_args;
-    void parseArg(std::string);
+    void ParseArg(std::string);
 };
 
 #endif //CLARCH_ARGS_H

@@ -7,23 +7,23 @@
 
 Args::Args(int argc, char **argv) {
     while(argc--) {
-        parseArg(*argv++);
+        ParseArg(*argv++);
     }
 }
 
-void Args::parseArg(std::string arg) {
+void Args::ParseArg(std::string arg) {
     size_t pos = arg.find("=");
     std::string key = arg.substr(0, pos);
     std::string value = arg.substr(pos + 1);
     m_args[key] = value;
 }
 
-void Args::printAll() {
+void Args::PrintAll() {
     for(auto& arg : m_args) {
         std::cout << arg.first << " :: " << arg.second << "\n";
     }
 }
 
-std::string Args::getArg(std::string key) {
+std::string Args::GetArg(std::string key) {
     return m_args[key];
 }

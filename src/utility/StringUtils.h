@@ -15,11 +15,11 @@ private:
     static const std::string whiteSpaces;
 
 public:
-    static void trimRight( std::string&, const std::string& trimChars = whiteSpaces);
-    static void trimLeft(std::string& str, const std::string& trimChars = whiteSpaces );
+    static void TrimRight(std::string &, const std::string &trimChars = whiteSpaces);
+    static void TrimLeft(std::string &str, const std::string &trimChars = whiteSpaces);
     static void trim(std::string& str, const std::string& trimChars = whiteSpaces);
 
-    static std::string substrBefore(std::string, std::string);
+    static std::string SubstringBefore(std::string, std::string);
 };
 
 

@@ -5,7 +5,7 @@
 #include <fstream>
 #include "JsonRenderer.h"
 
-void JsonRenderer::render(std::string file, ModuleStatsList moduleStats) {
+void JsonRenderer::Render(std::string file, ModuleStatsList moduleStats) {
     std::ofstream output(file);
 
     output << "[";
@@ -18,7 +18,7 @@ void JsonRenderer::render(std::string file, ModuleStatsList moduleStats) {
         ModuleStats fs = *it;
         output << "{";
 
-        output << R"("filename":")" << fs.getFilename() << "\"";
+        output << R"("filename":")" << fs.GetFilename() << "\"";
 
         output << "}";
 

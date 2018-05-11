@@ -12,7 +12,7 @@
 
 class JsonRenderer : public Renderer {
 public:
-    static void render(std::string filename, std::vector<ModuleStats>);
+    static void Render(std::string filename, std::vector<ModuleStats>);
 };
 
 

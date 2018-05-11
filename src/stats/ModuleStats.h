@@ -22,17 +22,17 @@ class ModuleStats {
 public:
     explicit ModuleStats(std::string filename);
 
-    void setValue(ModuleStatsKeys key, const std::string &value);
+    void SetValue(ModuleStatsKeys key, const std::string &value);
 
-    void addReference(std::string);
+    void AddReference(std::string);
 
-    std::string getFilename();
-    std::string getModule();
-    std::string getNamespace();
-    std::vector<std::string> getReferences();
+    std::string GetFilename();
+    std::string GetModule();
+    std::string GetNamespace();
+    std::vector<std::string> GetReferences();
 
-    void setModule(std::string);
-    void setNamespace(std::string);
+    void SetModule(std::string);
+    void SetNamespace(std::string);
 
 private:
     std::string m_namespace;

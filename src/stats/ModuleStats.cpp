@@ -10,32 +10,32 @@ ModuleStats::ModuleStats(std::string filename) {
     m_filename = std::move(filename);
 }
 
-void ModuleStats::setNamespace(std::string ns) {
+void ModuleStats::SetNamespace(std::string ns) {
     m_namespace = std::move(ns);
 }
 
-void ModuleStats::setModule(std::string module) {
+void ModuleStats::SetModule(std::string module) {
     m_module = std::move(module);
 }
 
-void ModuleStats::addReference(std::string reference) {
+void ModuleStats::AddReference(std::string reference) {
     m_references.push_back(reference);
 }
 
-void ModuleStats::setValue(ModuleStatsKeys key, const std::string &value) {
+void ModuleStats::SetValue(ModuleStatsKeys key, const std::string &value) {
     switch(key) {
         case ModuleStatsKeys::Module: {
-            setModule(value);
+            SetModule(value);
             break;
         }
 
         case ModuleStatsKeys::Namespace: {
-            setNamespace(value);
+            SetNamespace(value);
             break;
         }
 
         case ModuleStatsKeys ::Reference: {
-            addReference(value);
+            AddReference(value);
             break;
         }
 
@@ -45,18 +45,18 @@ void ModuleStats::setValue(ModuleStatsKeys key, const std::string &value) {
     }
 }
 
-std::string ModuleStats::getFilename() {
+std::string ModuleStats::GetFilename() {
     return m_filename;
 }
 
-std::string ModuleStats::getModule() {
+std::string ModuleStats::GetModule() {
     return m_module;
 }
 
-std::string ModuleStats::getNamespace() {
+std::string ModuleStats::GetNamespace() {
     return m_namespace;
 }
 
-std::vector<std::string> ModuleStats::getReferences() {
+std::vector<std::string> ModuleStats::GetReferences() {
     return m_references;
 }

@@ -13,7 +13,7 @@ ModuleStatsList &ReferenceResolver::ResolveReferenced(ModuleStatsList &stats) {
 const ModuleMap ReferenceResolver::BuildModuleMap(ModuleStatsList &stats) {
     ModuleMap map;
     for(ModuleStats stat : stats) {
-        std::cout << "... " << stat.getModule() << "\r\n";
+        std::cout << "... " << stat.GetModule() << "\r\n";
     }
     return map;
 }

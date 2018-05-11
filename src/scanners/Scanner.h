@@ -13,14 +13,9 @@ class Scanner {
 public:
     Scanner() = default;
 
-    virtual bool tokenOfInterest(std::string) = 0;
-    virtual ModuleStats handleToken(std::string token, std::string value, ModuleStats stats) = 0;
-
-    std::string trim(std::string input) {
-        return input;
-    }
+    virtual bool ExcludePath(std::string path) = 0;
+    virtual ModuleStats HandleToken(std::string token, std::string value, ModuleStats stats) = 0;
+    virtual bool TokenOfInterest(std::string) = 0;
 };
-
-
 
 #endif //CLARCH_SCANNER_H

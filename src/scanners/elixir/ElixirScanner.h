@@ -11,8 +11,9 @@
 class ElixirScanner : public Scanner {
 public:
     ElixirScanner() = default;
-    bool tokenOfInterest(std::string) override;
-    ModuleStats handleToken(std::string token, std::string value, ModuleStats stats) override;
+    bool ExcludePath(std::string path) override;
+    ModuleStats HandleToken(std::string token, std::string value, ModuleStats stats) override;
+    bool TokenOfInterest(std::string) override;
 
 private:
     std::map<std::string, ModuleStatsKeys> m_mappings = {
@@ -24,7 +25,14 @@ private:
             {"use", ModuleStatsKeys::Reference}
     };
 
-    std::vector<std::string> disentangleMultiAliases(std::string);
+    std::map<std::string, bool> m_excludedDirectories = {
+            {"_build", true},
+            {"deps", true},
+            {".git", true},
+            {"assets", true}
+    };
+
+    std::vector<std::string> DisentangleMultiAliases(std::string);
 };
 
 #endif //CLARCH_ELIXIRSCANNER_H

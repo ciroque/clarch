@@ -7,7 +7,7 @@
 #include "FileReader.h"
 #include "../scanners/Scanner.h"
 
-ModuleStats FileReader::processFile(std::string path, Scanner *scanner) {
+ModuleStats FileReader::ProcessFile(std::string path, Scanner *scanner) {
     std::ifstream input(path);
     std::string token;
     std::string value;
@@ -15,9 +15,9 @@ ModuleStats FileReader::processFile(std::string path, Scanner *scanner) {
 //    auto *stats = new ModuleStats(path);
     ModuleStats stats(path);
     while(input >> token) {
-        if(scanner->tokenOfInterest(token)) {
+        if(scanner->TokenOfInterest(token)) {
             std::getline(input, value);
-            scanner->handleToken(token, value, stats);
+            scanner->HandleToken(token, value, stats);
         }
     }
 
