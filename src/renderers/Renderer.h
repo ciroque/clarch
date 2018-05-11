@@ -10,6 +10,7 @@
 
 class Renderer {
 public:
+    // TODO: Instead of a string, how about a device...?
     virtual void Render(std::string, std::vector<FileStats>) = 0;
 };
 
