@@ -14,7 +14,7 @@ public:
     Scanner() = default;
 
     virtual bool tokenOfInterest(std::string) = 0;
-    virtual ModuleState handleToken(std::string token, std::string value, ModuleState stats) = 0;
+    virtual ModuleStats handleToken(std::string token, std::string value, ModuleStats stats) = 0;
 
     std::string trim(std::string input) {
         return input;

@@ -10,10 +10,10 @@ int main(int argc, char **argv) {
     Args args(argc, argv);
     auto elixirScanner = new ElixirScanner();
 
-    std::vector<ModuleState> allStats;
-    DirectoryReader::processDirectory(args, elixirScanner, allStats);
+    ModuleStatsList stats;
+    DirectoryReader::processDirectory(args, elixirScanner, stats);
 
-    JsonRenderer::render("output.json", allStats);
+    JsonRenderer::render("output.json", stats);
 
     return 0;
 }

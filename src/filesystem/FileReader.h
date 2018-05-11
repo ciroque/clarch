@@ -12,7 +12,7 @@
 
 class FileReader {
 public:
-    static ModuleState processFile(std::string, Scanner *scanner);
+    static ModuleStats processFile(std::string, Scanner *scanner);
 
 private:
     Scanner *m_scanner;

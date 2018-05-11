@@ -10,7 +10,7 @@ bool ElixirScanner::tokenOfInterest(std::string token) {
     return m_mappings.count(token) > 0;
 }
 
-ModuleState ElixirScanner::handleToken(std::string token, std::string value, ModuleState stats) {
+ModuleStats ElixirScanner::handleToken(std::string token, std::string value, ModuleStats stats) {
     value = StringUtils::substrBefore(value, " do");
 
     auto values = disentangleMultiAliases(value);

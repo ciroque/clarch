@@ -11,7 +11,7 @@
 class Renderer {
 public:
     // TODO: Instead of a string, how about a device...?
-    virtual void Render(std::string, std::vector<ModuleState>) = 0;
+    virtual void Render(std::string, std::vector<ModuleStats>) = 0;
 };
 
 #endif //CLARCH_RENDERER_H

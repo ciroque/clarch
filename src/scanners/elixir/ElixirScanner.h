@@ -12,7 +12,7 @@ class ElixirScanner : public Scanner {
 public:
     ElixirScanner() = default;
     bool tokenOfInterest(std::string) override;
-    ModuleState handleToken(std::string token, std::string value, ModuleState stats) override;
+    ModuleStats handleToken(std::string token, std::string value, ModuleStats stats) override;
 
 private:
     std::map<std::string, ModuleStatsKeys> m_mappings = {

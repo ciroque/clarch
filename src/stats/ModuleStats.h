@@ -8,15 +8,19 @@
 #include <string>
 #include <vector>
 
+class ModuleStats;
+
+typedef std::vector<ModuleStats> ModuleStatsList;
+
 enum ModuleStatsKeys : int {
     Namespace = 1,
     Module,
     Reference
 };
 
-class ModuleState {
+class ModuleStats {
 public:
-    explicit ModuleState(std::string filename);
+    explicit ModuleStats(std::string filename);
 
     void setValue(ModuleStatsKeys key, const std::string &value);
 
@@ -36,5 +40,6 @@ private:
     std::string m_filename;
     std::vector<std::string> m_references;
 };
+
 
 #endif //CLARCH_MODULESTATS_H
