@@ -5,7 +5,7 @@
 #include <fstream>
 #include "JsonRenderer.h"
 
-void JsonRenderer::render(std::string file, std::vector<ModuleStats> moduleStats) {
+void JsonRenderer::render(std::string file, ModuleStatsList moduleStats) {
     std::ofstream output(file);
 
     output << "[";

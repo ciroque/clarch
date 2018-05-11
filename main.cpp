@@ -5,6 +5,7 @@
 #include "src/scanners/elixir/ElixirScanner.h"
 #include "src/filesystem/DirectoryReader.h"
 #include "src/renderers/JsonRenderer.h"
+#include "src/stats/ReferenceResolver.h"
 
 int main(int argc, char **argv) {
     Args args(argc, argv);
@@ -12,7 +13,7 @@ int main(int argc, char **argv) {
 
     ModuleStatsList stats;
     DirectoryReader::processDirectory(args, elixirScanner, stats);
-
+    ReferenceResolver::ResolveReferenced(stats);
     JsonRenderer::render("output.json", stats);
 
     return 0;
