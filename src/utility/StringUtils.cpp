@@ -19,7 +19,7 @@ void StringUtils::TrimLeft(std::string &str, const std::string &trimChars) {
     str.erase(0, pos);
 }
 
-void StringUtils::trim(std::string& str, const std::string& trimChars) {
+void StringUtils::Trim(std::string &str, const std::string &trimChars) {
     TrimRight(str, trimChars);
     TrimLeft(str, trimChars);
 }

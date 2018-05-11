@@ -12,7 +12,6 @@ ModuleStats FileReader::ProcessFile(std::string path, Scanner *scanner) {
     std::string token;
     std::string value;
 
-//    auto *stats = new ModuleStats(path);
     ModuleStats stats(path);
     while(input >> token) {
         if(scanner->TokenOfInterest(token)) {

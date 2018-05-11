@@ -12,7 +12,7 @@ class ElixirScanner : public Scanner {
 public:
     ElixirScanner() = default;
     bool ExcludePath(std::string path) override;
-    ModuleStats HandleToken(std::string token, std::string value, ModuleStats stats) override;
+    ModuleStats HandleToken(std::string token, std::string value, ModuleStats &stats) override;
     bool TokenOfInterest(std::string) override;
 
 private:
@@ -29,7 +29,8 @@ private:
             {"_build", true},
             {"deps", true},
             {".git", true},
-            {"assets", true}
+            {"assets", true},
+            {"test", true}
     };
 
     std::vector<std::string> DisentangleMultiAliases(std::string);

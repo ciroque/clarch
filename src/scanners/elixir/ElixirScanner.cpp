@@ -14,7 +14,7 @@ bool ElixirScanner::TokenOfInterest(std::string token) {
     return m_mappings.count(token) > 0;
 }
 
-ModuleStats ElixirScanner::HandleToken(std::string token, std::string value, ModuleStats stats) {
+ModuleStats ElixirScanner::HandleToken(std::string token, std::string value, ModuleStats &stats) {
     value = StringUtils::SubstringBefore(value, " do");
 
     auto values = DisentangleMultiAliases(value);
@@ -24,6 +24,7 @@ ModuleStats ElixirScanner::HandleToken(std::string token, std::string value, Mod
     std::vector<std::string>::iterator it;
     for( it = values.begin(); it != values.end(); it++) {
         cleaned = StringUtils::SubstringBefore(*it, ",");
+        StringUtils::Trim(cleaned);
         stats.SetValue(m_mappings.at(token), cleaned);
     }
 
@@ -39,7 +40,7 @@ std::vector<std::string> ElixirScanner::DisentangleMultiAliases(std::string valu
         std::istringstream multis(value.substr(index + 1, (value.length() - (index + 2))));
         std::string referenced;
         while(getline(multis, referenced, ',')) {
-            StringUtils::trim(referenced);
+            StringUtils::Trim(referenced);
             references.push_back(prefix + referenced);
         }
 

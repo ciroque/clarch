@@ -31,8 +31,7 @@ public:
     std::string GetNamespace();
     std::vector<std::string> GetReferences();
 
-    void SetModule(std::string);
-    void SetNamespace(std::string);
+    std::string ToString();
 
 private:
     std::string m_namespace;

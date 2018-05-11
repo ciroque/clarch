@@ -17,7 +17,7 @@ private:
 public:
     static void TrimRight(std::string &, const std::string &trimChars = whiteSpaces);
     static void TrimLeft(std::string &str, const std::string &trimChars = whiteSpaces);
-    static void trim(std::string& str, const std::string& trimChars = whiteSpaces);
+    static void Trim(std::string &str, const std::string &trimChars = whiteSpaces);
 
     static std::string SubstringBefore(std::string, std::string);
 };
