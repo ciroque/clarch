@@ -14,7 +14,7 @@ void ModuleStats::AddReference(std::string reference) {
     try {
         m_references.push_back(reference);
     } catch(std::exception &ex) {
-        std::cerr << ex.what() << "\n";
+        std::cerr << ex.what() << "\r\n";
     }
 }
 
@@ -22,7 +22,7 @@ void ModuleStats::AddReferencedBy(std::string referencedBy) {
     try {
         m_referencedBy.push_back(referencedBy);
     } catch(std::exception &ex) {
-        std::cerr << ex.what() << "\n";
+        std::cerr << ex.what() << "\r\n";
     }
 }
 
@@ -67,7 +67,7 @@ std::vector<std::string> ModuleStats::GetReferences() {
 }
 
 std::string ModuleStats::ToString() {
-    std::string moduleStats = "\n-----\nModuleStats instance\n\n";
+    std::string moduleStats = "-----\nModuleStats instance\n\n";
 
     moduleStats += "Filename: " + m_filename;
     moduleStats += "\nModule: " + m_module;
@@ -78,10 +78,27 @@ std::string ModuleStats::ToString() {
         moduleStats += "\n\t-- " + ref;
     }
 
-    moduleStats += "\nReferenced By: ";
+    moduleStats += "\r\nReferenced By: ";
     for(const auto &ref : m_referencedBy) {
         moduleStats += "\n\t-- " + ref;
     }
 
+    moduleStats += "\nIncoming Reference Count: " + std::to_string(GetIncomingConnectionCount());
+    moduleStats += "\nOutgoing Reference Count: " + std::to_string(GetOutgoingConnectionCount());
+    moduleStats += "\nInstability: " + std::to_string(GetInstability());
     return moduleStats;
+}
+
+int ModuleStats::GetIncomingConnectionCount() {
+    return m_references.size();
+}
+
+int ModuleStats::GetOutgoingConnectionCount() {
+    return m_referencedBy.size();
+}
+
+float ModuleStats::GetInstability() {
+    int fanIn = GetIncomingConnectionCount();
+    int fanOut = GetOutgoingConnectionCount();
+    return (fanIn == 0 && fanOut == 0) ? 0 : ((float)fanOut / (fanIn + fanOut));
 }

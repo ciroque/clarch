@@ -33,6 +33,10 @@ public:
     std::string GetNamespace();
     std::vector<std::string> GetReferences();
 
+    int GetIncomingConnectionCount();
+    int GetOutgoingConnectionCount();
+    float GetInstability();
+
     std::string ToString();
 
 private:
