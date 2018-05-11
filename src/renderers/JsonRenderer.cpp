@@ -5,19 +5,17 @@
 #include <fstream>
 #include "JsonRenderer.h"
 
-void JsonRenderer::render(std::string file, std::vector<FileStats> fileStats) {
+void JsonRenderer::render(std::string file, std::vector<ModuleState> moduleStats) {
     std::ofstream output(file);
 
     output << "[";
 
-//    for(auto const &fs: fileStats) {
-    ;
     for(
-        auto it = fileStats.begin(), end = fileStats.end();
+        auto it = moduleStats.begin(), end = moduleStats.end();
         it != end;
         it++
     ) {
-        FileStats fs = *it;
+        ModuleState fs = *it;
         output << "{";
 
         output << "\"filename\":\"" << fs.getFilename() << "\"";

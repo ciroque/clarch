@@ -7,12 +7,12 @@
 
 
 #include <string>
-#include "../FileStats.h"
+#include "../stats/ModuleStats.h"
 #include "Renderer.h"
 
 class JsonRenderer : public Renderer {
 public:
-    static void render(std::string filename, std::vector<FileStats>);
+    static void render(std::string filename, std::vector<ModuleState>);
 };
 
 

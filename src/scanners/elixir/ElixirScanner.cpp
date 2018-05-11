@@ -4,13 +4,13 @@
 
 #include <sstream>
 #include "ElixirScanner.h"
-#include "../../StringUtils.h"
+#include "../../utility/StringUtils.h"
 
 bool ElixirScanner::tokenOfInterest(std::string token) {
     return m_mappings.count(token) > 0;
 }
 
-FileStats ElixirScanner::handleToken(std::string token, std::string value, FileStats stats) {
+ModuleState ElixirScanner::handleToken(std::string token, std::string value, ModuleState stats) {
     value = StringUtils::substrBefore(value, " do");
 
     auto values = disentangleMultiAliases(value);

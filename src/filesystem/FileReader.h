@@ -7,12 +7,12 @@
 
 
 #include <string>
-#include "FileStats.h"
-#include "scanners/Scanner.h"
+#include "../stats/ModuleStats.h"
+#include "../scanners/Scanner.h"
 
 class FileReader {
 public:
-    static FileStats processFile(std::string, Scanner *scanner);
+    static ModuleState processFile(std::string, Scanner *scanner);
 
 private:
     Scanner *m_scanner;

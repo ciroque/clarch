@@ -6,12 +6,12 @@
 #define CLARCH_DIRECTORYREADER_H
 
 
-#include "Args.h"
-#include "scanners/Scanner.h"
+#include "../Args.h"
+#include "../scanners/Scanner.h"
 
 class DirectoryReader {
 public:
-    static void processDirectory(Args&, Scanner*, std::vector<FileStats>&);
+    static void processDirectory(Args&, Scanner*, std::vector<ModuleState>&);
 };
 
 

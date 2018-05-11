@@ -2,23 +2,23 @@
 // Created by Steve Wagner on 5/1/18.
 //
 
-#ifndef CLARCH_FILESTATS_H
-#define CLARCH_FILESTATS_H
+#ifndef CLARCH_MODULESTATS_H
+#define CLARCH_MODULESTATS_H
 
 #include <string>
 #include <vector>
 
-enum FileStatsKeys : int {
+enum ModuleStatsKeys : int {
     Namespace = 1,
     Module,
     Reference
 };
 
-class FileStats {
+class ModuleState {
 public:
-    explicit FileStats(std::string filename);
+    explicit ModuleState(std::string filename);
 
-    void setValue(FileStatsKeys key, const std::string &value);
+    void setValue(ModuleStatsKeys key, const std::string &value);
 
     void addReference(std::string);
 
@@ -37,4 +37,4 @@ private:
     std::vector<std::string> m_references;
 };
 
-#endif //CLARCH_FILESTATS_H
+#endif //CLARCH_MODULESTATS_H

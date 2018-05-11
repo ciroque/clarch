@@ -8,7 +8,7 @@
 
 namespace fs = std::experimental::filesystem;
 
-void DirectoryReader::processDirectory(Args &args, Scanner *scanner, std::vector<FileStats> &fileStats) {
+void DirectoryReader::processDirectory(Args &args, Scanner *scanner, std::vector<ModuleState> &moduleStats) {
     std::map<std::string, bool > excludeList = { {"_build", true}, {"deps", true}, {".git", true}};
 
     fs::path rootPath = args.getArg("path");
@@ -28,8 +28,8 @@ void DirectoryReader::processDirectory(Args &args, Scanner *scanner, std::vector
 
         } else {
             if(p.path().extension() == ".ex") {
-                FileStats fs = FileReader::processFile(p.path().generic_u8string(), scanner);
-                fileStats.push_back(fs);
+                ModuleState fs = FileReader::processFile(p.path().generic_u8string(), scanner);
+                moduleStats.push_back(fs);
             }
       }
     }

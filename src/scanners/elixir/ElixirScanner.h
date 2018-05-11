@@ -12,16 +12,16 @@ class ElixirScanner : public Scanner {
 public:
     ElixirScanner() = default;
     bool tokenOfInterest(std::string) override;
-    FileStats handleToken(std::string token, std::string value, FileStats stats) override;
+    ModuleState handleToken(std::string token, std::string value, ModuleState stats) override;
 
 private:
-    std::map<std::string, FileStatsKeys> m_mappings = {
-            {"alias", FileStatsKeys::Reference},
-            {"behaviour", FileStatsKeys::Reference},
-            {"defmodule", FileStatsKeys::Module},
-            {"import", FileStatsKeys::Reference},
-            {"require", FileStatsKeys::Reference},
-            {"use", FileStatsKeys::Reference}
+    std::map<std::string, ModuleStatsKeys> m_mappings = {
+            {"alias", ModuleStatsKeys::Reference},
+            {"behaviour", ModuleStatsKeys::Reference},
+            {"defmodule", ModuleStatsKeys::Module},
+            {"import", ModuleStatsKeys::Reference},
+            {"require", ModuleStatsKeys::Reference},
+            {"use", ModuleStatsKeys::Reference}
     };
 
     std::vector<std::string> disentangleMultiAliases(std::string);

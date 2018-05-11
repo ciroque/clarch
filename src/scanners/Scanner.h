@@ -7,14 +7,14 @@
 
 #include <string>
 #include <iostream>
-#include "../FileStats.h"
+#include "../stats/ModuleStats.h"
 
 class Scanner {
 public:
     Scanner() = default;
 
     virtual bool tokenOfInterest(std::string) = 0;
-    virtual FileStats handleToken(std::string token, std::string value, FileStats stats) = 0;
+    virtual ModuleState handleToken(std::string token, std::string value, ModuleState stats) = 0;
 
     std::string trim(std::string input) {
         return input;
