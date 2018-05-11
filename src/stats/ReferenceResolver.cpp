@@ -6,14 +6,15 @@
 #include "ReferenceResolver.h"
 
 ModuleStatsList &ReferenceResolver::ResolveReferenced(ModuleStatsList &stats) {
-    BuildModuleMap(stats);
+    ModuleMap moduleMap;
+    PopulateModuleMap(stats, moduleMap);
+    std::cout << "Map Count: " << moduleMap.size() << "\n";
     return stats;
 }
 
-const ModuleMap ReferenceResolver::BuildModuleMap(ModuleStatsList &stats) {
-    ModuleMap map;
+ModuleMap &ReferenceResolver::PopulateModuleMap(ModuleStatsList &stats, ModuleMap &map) {
     for(ModuleStats stat : stats) {
-//        std::cout << "... " << stat.GetModule() << "\r\n";
+        map[stat.GetModule()] = &stat;
     }
     return map;
 }
