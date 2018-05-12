@@ -18,7 +18,7 @@ public:
 private:
     std::map<std::string, ModuleStatsKeys> m_mappings = {
             {"alias", ModuleStatsKeys::Reference},
-            {"behaviour", ModuleStatsKeys::Reference},
+            {"@behaviour", ModuleStatsKeys::Reference},
             {"defmodule", ModuleStatsKeys::Module},
             {"import", ModuleStatsKeys::Reference},
             {"require", ModuleStatsKeys::Reference},

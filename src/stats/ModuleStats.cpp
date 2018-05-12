@@ -90,11 +90,11 @@ std::string ModuleStats::ToString() {
 }
 
 int ModuleStats::GetIncomingConnectionCount() {
-    return m_references.size();
+    return m_referencedBy.size();
 }
 
 int ModuleStats::GetOutgoingConnectionCount() {
-    return m_referencedBy.size();
+    return m_references.size();
 }
 
 float ModuleStats::GetInstability() {
