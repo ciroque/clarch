@@ -14,7 +14,6 @@ void DirectoryReader::ProcessDirectory(Args &args, Scanner *scanner, std::vector
 
     for(decltype(iterator) end; iterator != end; iterator++) {
         fs::directory_entry p = *iterator;
-
         if(fs::is_directory(p.path())) {
             std::string filename = p.path().filename().generic_u8string();
             if(scanner->ExcludePath(filename)) {
@@ -22,7 +21,7 @@ void DirectoryReader::ProcessDirectory(Args &args, Scanner *scanner, std::vector
             }
 
         } else {
-            if(p.path().extension() == ".ex") {
+            if(scanner->FileExtensionOfInterest(p.path().extension().generic_u8string())) {
                 ModuleStats fs = FileReader::ProcessFile(p.path().generic_u8string(), scanner);
                 moduleStats.push_back(fs);
             }

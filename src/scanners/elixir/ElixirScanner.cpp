@@ -7,11 +7,15 @@
 #include "../../utility/StringUtils.h"
 
 bool ElixirScanner::ExcludePath(const std::string path) {
-    return m_excludedDirectories.count(path) > 0;
+    return excludedDirectories.count(path) > 0;
+}
+
+bool ElixirScanner::FileExtensionOfInterest(std::string extension) {
+    return fileExtensionsOfInterest.count(extension) > 0;
 }
 
 bool ElixirScanner::TokenOfInterest(std::string token) {
-    return m_mappings.count(token) > 0;
+    return mappings.count(token) > 0;
 }
 
 ModuleStats ElixirScanner::HandleToken(std::string token, std::string value, ModuleStats &stats) {
@@ -25,7 +29,7 @@ ModuleStats ElixirScanner::HandleToken(std::string token, std::string value, Mod
     for( it = values.begin(); it != values.end(); it++) {
         cleaned = StringUtils::SubstringBefore(*it, ",");
         StringUtils::Trim(cleaned);
-        stats.SetValue(m_mappings.at(token), cleaned);
+        stats.SetValue(mappings.at(token), cleaned);
     }
 
     return stats;

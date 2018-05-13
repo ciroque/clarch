@@ -14,6 +14,7 @@ public:
     Scanner() = default;
 
     virtual bool ExcludePath(std::string path) = 0;
+    virtual bool FileExtensionOfInterest(std::string) = 0;
     virtual ModuleStats HandleToken(std::string token, std::string value, ModuleStats &stats) = 0;
     virtual bool TokenOfInterest(std::string) = 0;
 };
