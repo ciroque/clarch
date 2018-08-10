@@ -35,6 +35,8 @@ void JsonRenderer::RenderModuleStats(std::ofstream& output, ModuleStats& moduleS
     output << R"("filename": ")" << moduleStats.GetFilename() << "\",";
     output << R"("modulename": ")" << moduleStats.GetModule() << "\",";
     output << R"("namespace": ")" << moduleStats.GetNamespace() << "\",";
+    output << R"("incomingConnectionCount": )" << moduleStats.GetIncomingConnectionCount() << ",";
+    output << R"("outgoingConnectionCount": )" << moduleStats.GetOutgoingConnectionCount() << ",";
     output << R"("references": [])";
     output << "}";
 }
