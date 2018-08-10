@@ -13,6 +13,9 @@
 class JsonRenderer : public Renderer {
 public:
     static void Render(std::string filename, std::vector<ModuleStats>);
+
+private:
+    static void RenderModuleStats(std::ofstream& output, ModuleStats& moduleStats);
 };
 
 

@@ -10,26 +10,31 @@ void JsonRenderer::Render(std::string file, ModuleStatsList moduleStats) {
 
     output << "[";
 
+    auto item = moduleStats.begin();
     for(
-        auto it = moduleStats.begin(), end = moduleStats.end();
-        it != end;
-        it++
+        auto end = --moduleStats.end();
+        item != end;
+        ++item
     ) {
-        ModuleStats fs = *it;
-        output << "{";
-
-        output << R"("filename":")" << fs.GetFilename() << "\",";
-        output << R"("modulename":")" << fs.GetModule() << "\",";
-        output << R"("namespace":")" << fs.GetNamespace() << "\",";
-        output << R"("references":"[])";
-        output << "}";
-
-        if(it != end) {
-            output << ",";
-        }
+        ModuleStats fs = *item;
+        JsonRenderer::RenderModuleStats(output, fs);
+        output << ", ";
     }
+
+    ModuleStats fs = *(--moduleStats.end());
+    JsonRenderer::RenderModuleStats(output, fs);
 
     output << "]";
 
     output.close();
+}
+
+void JsonRenderer::RenderModuleStats(std::ofstream& output, ModuleStats& moduleStats) {
+    output << "{";
+
+    output << R"("filename": ")" << moduleStats.GetFilename() << "\",";
+    output << R"("modulename": ")" << moduleStats.GetModule() << "\",";
+    output << R"("namespace": ")" << moduleStats.GetNamespace() << "\",";
+    output << R"("references": [])";
+    output << "}";
 }
