@@ -36,8 +36,8 @@ int main(int argc, char **argv) {
     JsonRenderer::Render("output.json", stats);
 
 //    PrintSortedModules(stats);
-
-    PrintAllStats(stats);
+//
+//    PrintAllStats(stats);
 
     return 0;
 }
