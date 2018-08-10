@@ -32,6 +32,7 @@ public:
     std::string GetModule();
     std::string GetNamespace();
     std::vector<std::string> GetReferences();
+    std::vector<std::string> GetReferencedBy();
 
     int GetIncomingConnectionCount();
     int GetOutgoingConnectionCount();
@@ -44,7 +45,7 @@ private:
     std::string m_module;
     std::string m_filename;
     StringList m_references;
-    std::vector<std::string> m_referencedBy;
+    StringList m_referencedBy;
 };
 
 

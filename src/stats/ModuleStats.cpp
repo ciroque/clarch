@@ -66,6 +66,10 @@ std::vector<std::string> ModuleStats::GetReferences() {
     return m_references;
 }
 
+std::vector<std::string> ModuleStats::GetReferencedBy() {
+    return m_referencedBy;
+}
+
 std::string ModuleStats::ToString() {
     std::string moduleStats = "-----\nModuleStats instance\n\n";
 

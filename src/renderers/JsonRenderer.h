@@ -12,10 +12,11 @@
 
 class JsonRenderer : public Renderer {
 public:
-    static void Render(std::string filename, std::vector<ModuleStats>);
+    static void Render(std::string, std::vector<ModuleStats>);
 
 private:
-    static void RenderModuleStats(std::ofstream& output, ModuleStats& moduleStats);
+    static void RenderModuleStats(std::ofstream&, ModuleStats&);
+    static void JsonRenderer::RenderReferences(std::ofstream&, std::string, std::vector<std::string>);
 };
 
 
